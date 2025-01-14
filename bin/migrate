@@ -1,0 +1,8 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+COMMAND=( "${@:-up}" )
+
+goose -dir migrations postgres "postgres://postgres:password@$(docker compose port postgres 5432)/postgres?sslmode=disable" "${COMMAND[@]}"
+
