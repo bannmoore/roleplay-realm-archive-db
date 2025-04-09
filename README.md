@@ -5,13 +5,11 @@
 - [Docker Desktop](https://docs.docker.com/desktop/)
 - [Goose](https://github.com/pressly/goose)
 
+Also requires the `roleplay-realm-archive` and `roleplay-realm-archive-infra` repos.
+
 ## Commands
 
-Run database:
-
-```sh
-docker compose up -d postgres
-```
+Run database: See the `roleplay-realm-archive-infra` project.
 
 Run migrations:
 
