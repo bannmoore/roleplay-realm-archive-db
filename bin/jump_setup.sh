@@ -20,3 +20,14 @@ if [[ $(which pgcli) ]]; then
 else
   sudo pip install --break-system-packages pgcli
 fi
+
+if [[ $(which psql) ]]; then
+  echo "Skipping postgres installation."
+else
+  # Ref: https://dev.to/johndotowl/postgresql-17-installation-on-ubuntu-2404-5bfi
+  sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+  curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+  sudo apt update -y
+  # Ref: https://docs.digitalocean.com/support/how-do-i-fix-the-pg_dump-aborting-because-of-server-version-mismatch-error/
+  sudo apt install postgresql-client-17 -y
+fi
